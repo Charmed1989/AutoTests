@@ -40,11 +40,7 @@ class ItemCreate {
     await this.page.waitForTimeout(5000);
     await this.page.locator("#kms-action-bar-button-Save").nth(0).filter({ visible: true }).click();
     await this.page.waitForTimeout(5000); 
-  //const frameLocator = this.page.frameLocator('iframe[name="itemscope"]');
-  //await frameLocator.locator('#item-update-tab-main').waitFor();
-  //const element = await frameLocator.locator('#item-update-tab-main').getByTitle('Click to enlarge').last();
-  //const srcAttribute = await element.getAttribute('src');
-  //expect(srcAttribute).toBeTruthy();
+  
   }
 
 async verifyColor(status) {
