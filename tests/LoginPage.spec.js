@@ -1,39 +1,12 @@
-const { test, expect } = require('@playwright/test');
-
-class LoginPage {
-  constructor(page) {
-    this.page = page;
-    this.server = 'kms-qa-08.lighthouse-cloud.com'; 
-  }
-
-  async navigate() {
-    await this.page.goto(`https://${this.server}/`);
-  }
-
-  async login(username, password) {
-    await this.page.getByRole('textbox', { name: 'Username' }).fill(username);
-    await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
-    await this.page.getByRole('button', { name: 'Login' }).click();
-  }
-
-  async selectLayout() {
-    await this.page.getByRole('button', { name: 'Manager' }).click();
-    await this.page.getByRole('listbox').getByRole('option', { name: 'Content Manager' }).click();
-    await this.page.getByRole('button', { name: 'Login' }).click();
-  }
-
-  async verifyLoginSuccess(expectedUrl) {
-    await this.page.waitForLoadState('load');
-    const currentUrl = this.page.url();
-    expect(currentUrl).toBe(expectedUrl);
-  }
-}
+const { test } = require('@playwright/test');
+const {username, password} = require('../utils/credentials');
+const LoginPage = require('../pages/LoginPage');
 
 test('login', async ({ page }) => {
   const loginPage = new LoginPage(page);
-
+  const layout = "Content Manager";
   await loginPage.navigate();
-  await loginPage.login('marinak', 'Kms123!');
-  await loginPage.selectLayout();
+  await loginPage.login(username, password);
+  await loginPage.selectLayout(layout);
   await loginPage.verifyLoginSuccess(`https://${loginPage.server}/kms/CM/INTERNAL/LAYOUT?item_id=4`)
 });
