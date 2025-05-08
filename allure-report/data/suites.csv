@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","31580","search","chromium","Thu May 08 22:56:40 MSK 2025","failed","Thu May 08 22:57:11 MSK 2025","","search.spec.js","",""
+"","22871","test","chromium","Thu May 08 22:55:11 MSK 2025","passed","Thu May 08 22:55:34 MSK 2025","","itemCreate.spec.js","",""
