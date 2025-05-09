@@ -20,7 +20,6 @@ const { getExpectedColor } = require('../utils/colorUtils');
       await loginPage.navigate();
       await loginPage.login(username, password);
       await loginPage.selectLayout(layout);
-     // await loginPage.verifyLoginSuccess(`https://${loginPage.server}/kms/CM/INTERNAL/LAYOUT?item_id=4`);
       await itemCreate.actionsFolder();
       await itemCreate.createNewItem(title);
       await itemCreate.changeStatus(status)
