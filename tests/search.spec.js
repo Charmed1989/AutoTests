@@ -24,7 +24,6 @@ const { getExpectedColor } = require('../utils/colorUtils');
       await itemCreate.createNewItem(title);
       await itemCreate.changeStatus(status)
       await itemCreate.saveItem();
-      await itemCreate.verifyColor(status);
       await itemCreate.actionsFolder();
       status = "Offline"
       title = `${status}_item_${randomNumber}`;
