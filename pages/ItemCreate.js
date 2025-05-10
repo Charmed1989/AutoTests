@@ -6,9 +6,9 @@ class ItemCreate {
     this.page = page;
   }
   async actionsFolder() {
-    await this.page.locator("(//span[normalize-space()='Folder 1'])[1]").hover();
+    await this.page.locator("(//span[normalize-space()='Folder 2'])[1]").hover();
     await this.page.waitForTimeout(500);
-    await this.page.locator("(//span[normalize-space()='Folder 1'])[1]").click({
+    await this.page.locator("(//span[normalize-space()='Folder 2'])[1]").click({
       button: 'right',
       delay: 200
     });
@@ -23,24 +23,21 @@ class ItemCreate {
     await iframe.getByRole('heading', { name: 'New Item' }).click();
     await iframe.locator('input[name="inplace_value"]').fill(title);
     await this.page.keyboard.press('Enter');
+    await this.page.waitForTimeout(500);
+
   }
   async changeStatus(status) {
     const iframe = this.page.frameLocator('iframe[name="itemscope"]');
     await iframe.getByRole('listbox', { name: 'Change status to' }).getByRole('img').click();
     await iframe.locator('div').filter({ hasText: /^Offline$/ }).first().click();
-    await this.page.waitForTimeout(500);
-    const statusElement = await iframe.locator('li[role="option"] .item-label span', { hasText: status });
-    await statusElement.click();
-    await statusElement.press('Enter');
-    await this.page.waitForTimeout(500);
-
-
+    await iframe.getByRole('option', { name: status }).locator('span').nth(1).click();
+    await iframe.waitForTimeout(500);
   }
   async saveItem() {
-    await this.page.waitForTimeout(2000);
+    await this.page.waitForTimeout(1000); 
     await this.page.locator("#kms-action-bar-button-Save").nth(0).filter({ visible: true }).click();
-    await this.page.waitForTimeout(2000); 
-  }
+    await this.page.waitForTimeout(1000); 
+      }
 async verifyColor(status) {
     const spanXPath = '//body//div[@id="outer-layout-wrapper"]//li//li[@class="dynatree-lastsib"]//button[1]//span[1]';
     await this.page.waitForSelector(spanXPath, { state: 'visible' });

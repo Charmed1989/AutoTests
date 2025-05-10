@@ -5,7 +5,6 @@ const ItemCreate = require('../pages/ItemCreate');
 const {password} = require('../utils/credentials');
 const { Search, searchResults } = require('../pages/SearchPage');
 const { checkLinkVisibility } = require('../utils/visability');
-const { getExpectedColor } = require('../utils/colorUtils');
 
     test('search', async ({ page }) => {
       const loginPage = new LoginPage(page);
