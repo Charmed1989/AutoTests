@@ -10,6 +10,8 @@ class Search {
       await this.page.waitForTimeout(1000); 
       await this.page.waitForSelector(`.top-toolbar__profile-username:has-text("${user}")`);
       await this.page.locator(`.top-toolbar__profile-username:has-text("${user}")`).nth(0).hover();
+      await this.page.locator(`.top-toolbar__profile-username:has-text("${user}")`).nth(0).click();
+      await this.page.waitForTimeout(1000); 
       await this.page.getByRole('link', { name: 'Logout' }).click();
     }
     async searchItem (randomNumber) {

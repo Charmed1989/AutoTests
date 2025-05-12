@@ -30,7 +30,7 @@ const { checkLinkVisibility } = require('../utils/visability');
       await itemCreate.saveItem();
       await search.logout(user);
       await loginPage.navigate();
-      username = "csrM";
+       username = "csrM";
       await loginPage.login(username, password);
       layout = "CSR";
       await loginPage.selectLayout(layout);

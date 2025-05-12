@@ -16,9 +16,7 @@ class FileManager {
     } 
 
     async checkFileAttached(frame, image) {
-        //const frame = this.page.locator('iframe[name="itemscope"]').contentFrame();
-        //const image = frame.getByRole('img', { name: 'Click to enlarge' });
-            if (await image.count() > 0) { 
+        if (await image.count() > 0) { 
             await expect(image).toBeVisible();
         } else {
             console.log('Element not found');
